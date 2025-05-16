@@ -1,0 +1,154 @@
+@import "./variables.css";
+.main_verificacao{
+    background-color: var(--color-roxo-background);
+    user-select: none;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50rem;
+    height: 100vh;
+    overflow: hidden;
+    font-weight: bold;
+    font-family: Nunito, Montserrat;
+}
+.container_verificacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 3rem;
+    padding-left: 5rem;
+    gap:2rem;
+}
+.barra_esquerda{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 22rem;
+    background-color: var(--color-roxo-escuro);
+    border-radius: 1rem;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    height: 41rem;
+}
+.barra_esquerda .status, .tempo, .memoria{
+    background-color: var(--color-roxo-claro);
+    width: 14rem;
+    height: 13rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-white);
+    border-radius: 1rem;
+}
+.barra_esquerda .status h2, .tempo h2, .memoria h2{
+    font-weight: bold;
+}
+.barra_esquerda .status img, .tempo img, .memoria img{
+    width: 4.6rem;
+    padding-top: 1.6rem;
+    padding-bottom: 1rem;
+}
+.barra_esquerda .status h2{
+    background-color: var(--color-yellow);
+    justify-self: center;
+    width: 6.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-radius: 0.8rem 0rem 0.8rem 0rem;
+}
+.barra_esquerda .tempo h2{
+    background-color: var(--color-blue);
+    justify-self: center;
+    width: 6.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-radius: 0.8rem 0rem 0.8rem 0rem;
+}
+.barra_esquerda .memoria h2{
+    background-color: var(--color-pink);
+    justify-self: center;
+    width: 6.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-radius: 0.8rem 0rem 0.8rem 0rem;
+}
+.barra_direita{
+    background-color:var(--color-roxo-escuro);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    width: 59rem;
+    padding-top: 3.6rem;
+    overflow-y:auto;
+    height: 41rem;
+}
+.barra_direita .mensagem{
+    text-align: center;
+    color: var(--color-white);
+}
+.barra_direita .mensagem h1{
+    font-size: 1.8rem;
+}
+.barra_direita .mensagem img{
+    width: 23rem;
+    padding: 2.3rem 0rem;
+}
+.barra_direita .mensagem p{
+    padding-top: 0.8rem;
+    padding-bottom: 0.7rem;
+}
+.barra_direita hr{
+    width: 50rem;
+    align-self: center;
+}
+.barra_direita button{
+    margin-bottom: 0.7rem;
+    background-color: var(--color-yellow);
+    width: 9rem;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    color: var(--color-white);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.barra_direita .code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.barra_direita .code h1{
+    color: var(--color-white);
+    margin-top: 1rem;
+    font-size: 1.9rem;
+}
+.barra_direita .code img{
+    width: 38rem;
+    /* background-color: var(--color-roxo-terminal); */
+    padding: 2rem 4rem 1rem 1rem;
+    border-radius: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.barra_direita::-webkit-scrollbar {
+    width: 0.6rem; 
+}
+
+.barra_direita::-webkit-scrollbar-track {
+    background: var( --color-white-secondary);
+    border-radius: 5px;
+}
+
+.barra_direita::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 5px;
+    border: 0.03rem solid var( --color-white-secondary);
+}
+
+.barra_direita::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-roxo-claro);
+}
+.mensagem button:hover {
+  transform: scale(1.1);
+}

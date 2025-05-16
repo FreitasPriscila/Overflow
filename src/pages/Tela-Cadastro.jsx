@@ -2,8 +2,13 @@ import { useState } from "react";
 import logo from "../assets/logo_page.svg";
 import style from "../styles/Tela-Cadastro.module.css";
 import NuvensAnimadas from "../componentes/nuvem.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Cadastro() {
+    const navigate = useNavigate();
+    const handleClickLogin = () =>{
+    navigate("/");
+  }
   const [nome, setNome] = useState("");
   const [apelido, setApelido] = useState("");
   const [email, setEmail] = useState("");
@@ -15,6 +20,7 @@ function Cadastro() {
   const [erro, setErro] = useState("");
 
   function handleSubmit(e) {
+    
     e.preventDefault();
 
     if (!nome || !apelido || !email || !dataNascimento || !sexo || !tipoUsuario || !senha || !confirmarSenha) {
@@ -137,7 +143,7 @@ function Cadastro() {
         </div>
         <hr className={style.hr}/>
         <div className={style.login}>
-          <button>Realizar Login</button>
+          <button onClick={handleClickLogin}>Realizar Login</button>
         </div>
       </div>
     </div>
