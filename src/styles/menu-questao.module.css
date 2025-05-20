@@ -56,6 +56,12 @@
     }
 }
 
+@media (max-height:1620px){
+    .box_listaquestoes{
+        paddin-top:10px;
+    }
+}
+
 .progresso{
     width:190px;
     height:190px;
