@@ -56,9 +56,9 @@
     }
 }
 
-@media (max-height:1620px){
+@media (max-height:620px){
     .box_listaquestoes{
-        paddin-top:10px;
+        paddin-top:0px;
     }
 }
 
