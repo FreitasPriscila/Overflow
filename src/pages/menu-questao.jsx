@@ -77,8 +77,7 @@ const MenuQuestao = () => {
                   <h2>Dê um Oii para a Plataforma!</h2>
                 </a>
                 <p>
-                  Crie um código simples na linguagem que preferir para
-                  cumprimentar a plataforma!🖖🏽
+                  oiiiiiiiiiii
                 </p>
                 <div className={styles.info_questoes}>
                   <div className={styles.info_pessoas}>
