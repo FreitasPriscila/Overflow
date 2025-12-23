@@ -1,3 +1,4 @@
+import { BASE_URL } from "../services/api";
 import { useState } from "react";
 import logo from "../assets/logo_page.svg";
 import style from "../styles/Tela-Cadastro.module.css";
@@ -19,8 +20,9 @@ function Cadastro() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [erro, setErro] = useState("");
   const [camposInvalidos, setCamposInvalidos] = useState([]);
+  const [aceitouTermos, setAceitouTermos] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const invalidos = [];
@@ -46,9 +48,64 @@ function Cadastro() {
       return;
     }
 
-    setErro("");
-    alert("Conta criada com sucesso!");
+      if (!aceitouTermos) {
+    setErro("Você precisa aceitar os termos.");
+    setCamposInvalidos([...camposInvalidos, 'aceitouTermos']);
+    return;
   }
+
+    const sexoMap = {
+    "Masculino": "masculino",
+    "Feminino": "feminino",
+    "Outro": "outro"
+  };
+
+  const tipoMap = {
+    "Estudante": "estudante",
+    "Professor": "professor"
+  };
+
+  const payload = {
+    username: apelido,
+    email: email,
+    password: senha,
+    confirmar_senha: confirmarSenha,
+    nome: nome,
+    data_nascimento: dataNascimento,
+    sexo: sexoMap[sexo], 
+    tipo_usuario: tipoMap[tipoUsuario], 
+    aceitou_termos: true 
+  };
+try {
+      const response = await fetch(`${BASE_URL}/api/auth/cadastro/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Conta criada com sucesso! Faça login para continuar.");
+      navigate("/"); 
+    } else {
+      console.error("Erro do servidor:", data);
+      
+      let mensagemErro = "Erro ao cadastrar:\n";
+      Object.entries(data).forEach(([campo, erros]) => {
+        const texto = Array.isArray(erros) ? erros.join(', ') : String(erros);
+          mensagemErro += `- ${campo}: ${texto}\n`;
+      });
+      
+      setErro(mensagemErro);
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    setErro("Erro de conexão com o servidor. Verifique se o backend está rodando.");
+  }
+}
 
   const isCampoInvalido = (campo) => camposInvalidos.includes(campo);
 
@@ -188,7 +245,7 @@ function Cadastro() {
               onChange={(e) => setConfirmarSenha(e.target.value)}
             />
             <label>
-              <input type="checkbox" value="aceito" />
+              <input type="checkbox" value="aceito" checked={aceitouTermos} onChange={e => setAceitouTermos(e.target.checked)} />
               Eu aceito os termos e condições, Política de Privacidade e política de Cookies
             </label>
           </div>
